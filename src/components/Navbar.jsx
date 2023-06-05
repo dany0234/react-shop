@@ -3,6 +3,8 @@ import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -67,6 +69,19 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
+  const handleSignInClick = () => {
+    navigate('/login'); 
+  };
+  const handleRegisterClick = () => {
+    navigate('/register'); 
+  };
+  const handleCartClick = () => {
+    navigate('/cart'); 
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -81,9 +96,9 @@ const Navbar = () => {
           <Logo>LAMA.</Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <MenuItem>
+          <MenuItem onClick={handleRegisterClick}>REGISTER</MenuItem>
+          <MenuItem onClick={handleSignInClick}>SIGN IN</MenuItem>
+          <MenuItem onClick={handleCartClick}>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined />
             </Badge>
